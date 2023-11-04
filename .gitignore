@@ -1,0 +1,6 @@
+.venv/
+config.cfg
+config.yaml
+test.py
+dataset/
+**/__pycache__
