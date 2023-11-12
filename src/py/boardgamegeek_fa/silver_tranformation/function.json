@@ -1,0 +1,12 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "inputBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "bronze/consolidated_game_info.json",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}

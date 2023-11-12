@@ -1,0 +1,12 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "inputBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "silver/silver_game_info.csv",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
