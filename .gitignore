@@ -3,4 +3,5 @@ config.cfg
 config.yaml
 test.py
 dataset/
+.vscode
 **/__pycache__
