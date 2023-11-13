@@ -1,5 +1,19 @@
 # BoardgameGeek Data Pipeline
-## Problem and Objective
+
+<!-- Start Document Outline -->
+* [Problem and Objective](#problem-and-objective)
+* [Architecture](#architecture)
+	* [Overview](#overview)
+	* [ETL Flow](#etl-flow)
+	* [PowerBI Dashboard](#powerbi-dashboard)
+* [How to run](#how-to-run)
+	* [Prerequisites](#prerequisites)
+	* [Setting up Azure resources](#setting-up-azure-resources)
+	* [Change local config settings in local.settings.json to fit your Azure resources](#change-local-config-settings-in-localsettingsjson-to-fit-your-azure-resources)
+	* [Small warning](#small-warning)
+	* [Test and debug our data pipeline](#test-and-debug-our-data-pipeline)
+	
+<!-- End Document Outline -->Problem and Objective
 - 
 - 
 ## Architecture
@@ -46,7 +60,7 @@ As you can see, **scrape_games_info** will start when it detects the file **bron
 ![trigger binding azure function](png/trigger_binding_azure_function.png)
 
 ### Test and debug our data pipeline
-Follow the path `src/py/` inside repo to open `boardgamegeek_fa` folder using VS code, then press F5 and run Postman to test the pipeline
+Follow the path `src/py/` inside repo to open `boardgamegeek_fa` folder using VS code, then press F5 and open Postman to test the pipeline
 ![postman test function](png/postman_test_function.png)
 => After you've done with debug and testing, you can deploy the whole Azure Function project into cloud and run from there
 
