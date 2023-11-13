@@ -6,7 +6,7 @@
 -  Luckily for us, BoardgameGeek has API to get boardgame's data based on ID. So I decided to build a data pipeline to get/scrape their top games's data on this page (https://boardgamegeek.com/browse/boardgame) and save to Azure SQL DB
 ![bgk top games](png/bgk_top_games.png)
 - The project focuses on using services provided by Microsoft Azure, I also build a PowerBI dashboard to visualize and help my group to find new boardgames
-
+![architecture diagram](png/architecture_diagram.png)
 ## Architecture
 The pipeline consists of various modules and technologies
 - **Microsoft Azure**: Azure function (orchestrating and running function), Azure Data Lake Storage (ADLS)
