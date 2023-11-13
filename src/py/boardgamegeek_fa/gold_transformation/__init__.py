@@ -93,15 +93,19 @@ def main(inputBlob: InputStream):
     logging.info("Start uploading data to Azure SQL Server DB")
     print("Start uploading data to Azure SQL Server DB")
     start_time = time.time()
-    master_boardgame_df.to_sql(name="boardgame", con=db._engine, if_exists='replace', index=False)
-    master_boardgamemechanic_df.to_sql(name="boardgamemechanic", con=db._engine, if_exists='replace', index=False)
-    master_boardgamefamily_df.to_sql(name="boardgamefamily", con=db._engine, if_exists='replace', index=False)
-    master_boardgamepublisher_df.to_sql(name="boardgamepublisher", con=db._engine, if_exists='replace', index=False, dtype = {col_name: NVARCHAR for col_name in txt_cols})
-    master_boardgamedesigner_df.to_sql(name="boardgamedesigner", con=db._engine, if_exists='replace', index=False)
-    bridge_boardgamemechanic_df.to_sql(name="bridge_boardgamemechanic", con=db._engine, if_exists='replace', index=False)
-    bridge_boardgamefamily_df.to_sql(name="bridge_boardgamefamily", con=db._engine, if_exists='replace', index=False)
-    bridge_boardgamepublisher_df.to_sql(name="bridge_boardgamepublisher", con=db._engine, if_exists='replace', index=False)
-    bridge_boardgamedesigner_df.to_sql(name="bridge_boardgamedesigner", con=db._engine, if_exists='replace', index=False)
+    try:
+        master_boardgame_df.to_sql(name="boardgame", con=db._engine, if_exists='replace', index=False)
+        master_boardgamemechanic_df.to_sql(name="boardgamemechanic", con=db._engine, if_exists='replace', index=False)
+        master_boardgamefamily_df.to_sql(name="boardgamefamily", con=db._engine, if_exists='replace', index=False)
+        master_boardgamepublisher_df.to_sql(name="boardgamepublisher", con=db._engine, if_exists='replace', index=False, dtype = {col_name: NVARCHAR for col_name in txt_cols})
+        master_boardgamedesigner_df.to_sql(name="boardgamedesigner", con=db._engine, if_exists='replace', index=False)
+        bridge_boardgamemechanic_df.to_sql(name="bridge_boardgamemechanic", con=db._engine, if_exists='replace', index=False)
+        bridge_boardgamefamily_df.to_sql(name="bridge_boardgamefamily", con=db._engine, if_exists='replace', index=False)
+        bridge_boardgamepublisher_df.to_sql(name="bridge_boardgamepublisher", con=db._engine, if_exists='replace', index=False)
+        bridge_boardgamedesigner_df.to_sql(name="bridge_boardgamedesigner", con=db._engine, if_exists='replace', index=False)
+    except Exception as e:
+        logging.info(f"Error connecting to the database: {e}, please check config parameters again")
+        return None
     execution_time = time.time() - start_time
     print(f"uploading data completed, total second takes to upload to SQL server DB: {int(execution_time)}s")
     logging.info("Uploading data completed")

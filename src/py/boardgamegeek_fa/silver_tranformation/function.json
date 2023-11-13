@@ -5,7 +5,7 @@
       "name": "inputBlob",
       "type": "blobTrigger",
       "direction": "in",
-      "path": "bronze/consolidated_game_info.json",
+      "path": "bronze/consolidated_game_info.csv",
       "connection": "AzureWebJobsStorage"
     }
   ]

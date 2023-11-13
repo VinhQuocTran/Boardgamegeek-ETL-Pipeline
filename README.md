@@ -1,4 +1,20 @@
 # BoardgameGeek Data Pipeline
+<!-- Start Document Outline -->
+
+* [BoardgameGeek Data Pipeline](#boardgamegeek-data-pipeline)
+	* [Problem and Objective](#problem-and-objective)
+	* [Architecture](#architecture)
+		* [Overview](#overview)
+		* [ETL Flow](#etl-flow)
+		* [PowerBI Dashboard](#powerbi-dashboard)
+	* [How to run](#how-to-run)
+		* [Prerequisites](#prerequisites)
+		* [Setting up Azure resources](#setting-up-azure-resources)
+		* [Change local config settings in local.settings.json to fit your Azure resources](#change-local-config-settings-in-localsettingsjson-to-fit-your-azure-resources)
+		* [Small warning](#small-warning)
+		* [Test and debug our data pipeline](#test-and-debug-our-data-pipeline)
+
+<!-- End Document Outline -->
 ## Problem and Objective
 - As my boardgame group was browsing through a ton of articles to find a new game to play, I suddenly thought to myself why did we have to spend so much time to find something like this, there must be some tools or websites to help us right ?
 - The first website came to my mind was BoardgameGeek, the page shows all information about every kind of boardgame. But its searching page (https://boardgamegeek.com/advsearch/boardgame) is quite bad and clunky.

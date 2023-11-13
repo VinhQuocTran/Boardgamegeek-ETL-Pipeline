@@ -54,8 +54,15 @@ def main(inputBlob: InputStream):
 
     # Flatten array and json serialization
     consolidated_data=flatten_array(consolidated_data)
-    consolidated_data=json.dumps(consolidated_data,ensure_ascii=False) 
-    adls.upload_file_to_container(container_name,consolidated_data,"consolidated_game_info.json")
+    consolidated_data=pd.DataFrame(consolidated_data)
+    consolidated_data['rank']=df['rank']
+    consolidated_data['geek_rating']=df['geek_rating']
+    consolidated_data['avg_rating']=df['avg_rating']
+    consolidated_data['num_voters']=df['num_voters']
+    csv_content = consolidated_data.to_csv(index=False,encoding='utf-8').encode('utf-8')
+    
+    # consolidated_data=json.dumps(consolidated_data,ensure_ascii=False) 
+    adls.upload_file_to_container(container_name,csv_content,"consolidated_game_info.csv")
 
 ############## Custom function ##############
 def flatten_array(nested_list: list):

@@ -36,14 +36,19 @@ def main(inputBlob: InputStream):
     
 
     # Reading consolidated_game_info.json using pd.read_json
-    blob_content = inputBlob.read()
-    json_file_like = io.BytesIO(blob_content)
-    silver_df = pd.read_json(json_file_like)
+    # blob_content = inputBlob.read()
+    # json_file_like = io.BytesIO(blob_content)
+    # silver_df = pd.read_json(json_file_like)
 
     # Reading consolidated_game_info.json using pd.DataFrame
     # blob_content = inputBlob.read().decode("utf-8")
     # json_data = json.loads(blob_content)
     # silver_df = pd.DataFrame(json_data)
+
+    # Read data from inputBlob and convert to DataFrame
+    blob_content = inputBlob.read()
+    csv_file_like = io.StringIO(blob_content.decode('utf-8'))
+    silver_df = pd.read_csv(csv_file_like,encoding="utf-8")
 
     # add total_award column
     silver_df['total_award']=silver_df['boardgamehonor'].str.len()

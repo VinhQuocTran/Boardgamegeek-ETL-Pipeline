@@ -66,11 +66,22 @@ def scrape_top_games(total_page: int) -> list:
                 
                 name = game.find('a', {'class': 'primary'}).text.strip()
                 year = game.find('span', {'class': 'smallerfont'}).text.strip()[1:-1]  # Remove parentheses
+
+                # rating info
+                rating_info = game.find_all('td', {'class': 'collection_bggrating'})
+                geek_rating=rating_info[0].text.strip()
+                avg_rating=rating_info[1].text.strip()
+                num_voters=rating_info[2].text.strip()
+                
+
                 all_top_games.append({
                     "rank": rank,
                     "game_id": game_id,
                     "name": name,
                     "year": year,
+                    "geek_rating": geek_rating,
+                    "avg_rating": avg_rating,
+                    "num_voters": num_voters,
                     "date_scraped":get_current_hour()
                 })
             print(f"Page {num_page} boardgamegeek scraped successfully")
