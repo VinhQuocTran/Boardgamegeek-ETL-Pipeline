@@ -1,7 +1,12 @@
 # BoardgameGeek Data Pipeline
 ## Problem and Objective
-- 
-- 
+- As my boardgame group was browsing through a ton of articles to find a new game to play, I suddenly thought to myself why did we have to spend so much time to find something like this, there must be some tools or websites to help us right ?
+- The first website came to my mind was BoardgameGeek, the page shows all information about every kind of boardgame. But its searching page (https://boardgamegeek.com/advsearch/boardgame) is quite bad and clunky.
+![bgk search page](png/bgk_search_page.png)
+-  Luckily for us, BoardgameGeek has API to get boardgame's data based on ID. So I decided to build a data pipeline to get/scrape their top games's data on this page (https://boardgamegeek.com/browse/boardgame) and save to Azure SQL DB
+![bgk top games](png/bgk_top_games.png)
+- The project focuses on using services provided by Microsoft Azure, I also build a PowerBI dashboard to visualize and help my group to find new boardgames
+
 ## Architecture
 The pipeline consists of various modules and technologies
 - **Microsoft Azure**: Azure function (orchestrating and running function), Azure Data Lake Storage (ADLS)
