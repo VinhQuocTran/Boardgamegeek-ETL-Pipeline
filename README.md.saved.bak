@@ -37,7 +37,7 @@ The pipeline consists of various modules and technologies
 - **silver_transformation** gets that data to clean and add more useful features. Then the function saves data to **Silver** container.
 - Finally, **gold_transformation** transforms data to fit business's requirements. In this case, the function creates master and bridge table and uploads it to Azure SQL Server DB. The CSV files containing master and bridge data will be saved to **Gold** container.
 ### PowerBI Dashboard
-![bgk dashboard](png/bgk_dashboard.png)
+
 ## How to run
 ### Prerequisites
 Install VS Code and its below extensions. 
