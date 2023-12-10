@@ -36,6 +36,7 @@ The pipeline consists of various modules and technologies
 - After **scrape_top_games** finished, it will trigger **scrape_games_info** function to get detail information for each game. Then all batch data will be consolidated and saved to **Bronze** container
 - **silver_transformation** gets that data to clean and add more useful features. Then the function saves data to **Silver** container.
 - Finally, **gold_transformation** transforms data to fit business's requirements. In this case, the function creates master and bridge table and uploads it to Azure SQL Server DB. The CSV files containing master and bridge data will be saved to **Gold** container.
+![data model](png/data-model.png)
 ### PowerBI Dashboard
 ![bgk dashboard](png/bgk_dashboard.png)
 ## How to run
@@ -45,7 +46,7 @@ Install VS Code and its below extensions.
 - Azure Function
 - Azure Resources
 
-You also have to install **Postman** to locally test and debug our Azure function 
+You also have to install **Postman** to locally test and debug Azure Function 
 ### Setting up Azure resources
 Create all resources below to prepare for the data pipeline
 - 1 Azure Data Lake Storage account Gen 2 (ADLS) and 3 containers for our data layer: bronze, silver ,gold
