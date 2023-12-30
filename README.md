@@ -32,11 +32,14 @@ The pipeline consists of various modules and technologies
 - Data is captured from the BoardgameGeek API using BGG XML API. The API documentation is available here: https://boardgamegeek.com/wiki/page/BGG_XML_API&redirectedfrom=XML_API#
 - The collected data from the BoardgameGeek API is directly stored to the **Bronze** container on Azure Data Lake Storage (ADLS). ETL jobs and orchestration are written using Azure Function, **the whole data pipeline starts running when you trigger the HTTP of your Azure function**
 ### ETL Flow
-- You trigger HTTP of **scrape_top_games** in Azure function to start a pipeline. The function will scrapes all top games of BoardgameGeek page, its parameters include: total_page and batch_size. **total_page** determines how many pages you want to scrape, each page has 100 games. **batch_size** determines how many games you want to scrape in 1 batch (highly recommend 20 or 50 for this parameter)
-- After **scrape_top_games** finished, it will trigger **scrape_games_info** function to get detail information for each game. Then all batch data will be consolidated and saved to **Bronze** container
-- **silver_transformation** gets that data to clean and add more useful features. Then the function saves data to **Silver** container.
-- Finally, **gold_transformation** transforms data to fit business's requirements. In this case, the function creates master and bridge table and uploads it to Azure SQL Server DB. The CSV files containing master and bridge data will be saved to **Gold** container.
+- You trigger HTTP of `scrape_top_games.py` in Azure function to start a pipeline. The function will scrapes all top games of BoardgameGeek page, its parameters include: total_page and batch_size. 
+    - **total_page** determines how many pages you want to scrape, each page has 100 games. 
+    - **batch_size** determines how many games you want to scrape in 1 batch (highly recommend 20 or 50 for this parameter)
+- `scrape_games_info.py` will be triggered after this to get detail information for each game. Then all batch data will be consolidated and saved to **Bronze** container
+- Azure Function `silver_transformation` gets that data to clean and add more useful features. Then the function saves data to **Silver** container.
+- Finally, Azure Function `gold_transformation` transforms data to fit business's requirements. In this case, the function creates master and bridge table and uploads it to Azure SQL Server DB. The CSV files containing master and bridge data will be saved to **Gold** container.
 ![data model](png/data-model.png)
+![flow diagram](png/flow_diagram.png)
 ### PowerBI Dashboard
 ![bgk dashboard](png/bgk_dashboard.png)
 ## How to run
