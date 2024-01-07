@@ -184,4 +184,4 @@ def scrape_boardgame_in_batch(boardgame_ids: list,batch_size: int) -> list:
 
         # Sleep 2s to avoid overload an API
         time.sleep(2)
-        yield [json.dumps(games_info, ensure_ascii=False),file_batch_name]
+        yield [json.dumps(games_info, ensure_ascii=False,indent=4),file_batch_name]
