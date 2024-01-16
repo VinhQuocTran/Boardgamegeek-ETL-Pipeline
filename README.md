@@ -38,10 +38,10 @@ The pipeline consists of various modules and technologies
 - `scrape_games_info.py` will be triggered after this to get detail information for each game. Then all batch data will be consolidated and saved to **Bronze** container
 - Azure Function `silver_transformation` gets that data to clean and add more useful features. Then the function saves data to **Silver** container.
 - Finally, Azure Function `gold_transformation` transforms data to fit business's requirements. In this case, the function creates master and bridge table and uploads it to Azure SQL Server DB. The CSV files containing master and bridge data will be saved to **Gold** container.
-![data model](png/data-model.png)
 ![flow diagram](png/flow_diagram.png)
-### PowerBI Dashboard
+### Data Modeling and PowerBI Dashboard
 ![bgk dashboard](png/bgk_dashboard.png)
+![data model](png/data-model.png)
 ## How to run
 ### Prerequisites
 Install VS Code and its below extensions. 
